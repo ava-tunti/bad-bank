@@ -1,4 +1,5 @@
 function Home(){
+  const ctx = React.useContext(UserContext);
   return (
     <><Card
       txtcolor="black"
