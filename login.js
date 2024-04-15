@@ -38,7 +38,7 @@ function Login() {
 
     return (
         <Card
-            bgcolor="primary"
+            bgcolor="light-orange"
             header="Login"
             status={status}
             body={!loggedIn ? (
