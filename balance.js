@@ -5,4 +5,5 @@ function Balance(){
     <h1>Balance</h1>
     {JSON.stringify(ctx)}<br/>
     </>
+  );
 }
