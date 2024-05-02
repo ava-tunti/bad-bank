@@ -98,7 +98,7 @@ function CreateAccount(){
     setStatus('');
   }
 
-  const isFormEmpty = !name || !email || !password;
+  const isFormEmpty = !name && !email && !password;
 
   return (
     <Card
