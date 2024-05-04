@@ -7,8 +7,9 @@
 //     </>
 //   );
 // }
-
 import React, { useState, useContext } from 'react';
+import UserContext from './UserContext';
+import Card from './Card'; // Import Card component
 
 function Withdraw() {
   const ctx = useContext(UserContext);
@@ -76,4 +77,3 @@ function Withdraw() {
 }
 
 export default Withdraw;
-
