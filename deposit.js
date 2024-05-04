@@ -10,10 +10,9 @@
 
 
 import React, { useState, useContext } from 'react';
-import Balance from './balance.js';
 
 function Deposit() {
-  const ctx = useContext(Balance);
+  const ctx = useContext(UserContext);
   const [depositAmount, setDepositAmount] = useState('');
   const [status, setStatus] = useState('');
 
