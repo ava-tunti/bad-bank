@@ -12,11 +12,20 @@ import UserContext from './UserContext';
 import Card from './Card'; 
 
 function Withdraw() {
-  const ctx = useContext(UserContext);
   const [withdrawAmount, setWithdrawAmount] = useState('');
   const [status, setStatus] = useState('');
-
-  const handleWithdraw = () => {
+  const ctx = useContext(UserContext);
+  
+  function validate(field, label){
+    if (!field) {
+      setStatus('Error: ' + label);
+      setTimeout(() => setStatus(''), 3000);
+      return false;
+    }
+    return true;
+  }
+  
+  function handleWithdraw = () => {
     const withdrawValue = parseFloat(withdrawAmount);
 
     if (isNaN(withdrawValue)) {
@@ -29,7 +38,7 @@ function Withdraw() {
       return;
     }
 
-    if (withdrawValue > ctx.users[0]?.balance) 
+    if (withdrawValue > ctx.users[0].balance) 
       setStatus('Error: Withdrawal amount exceeds account balance.');
       return;
     }
@@ -53,7 +62,7 @@ function Withdraw() {
       status={status}
       body={(
         <>
-          <p>Balance: {ctx.users[0]?.balance}</p> 
+          <p>Balance: {ctx.users[0].balance}</p> 
           <input
             type="text"
             className="form-control"
@@ -76,4 +85,3 @@ function Withdraw() {
 
 export default Withdraw;
 
-export default Withdraw;
