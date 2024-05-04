@@ -9,7 +9,7 @@
 // }
 import React, { useState, useContext } from 'react';
 import UserContext from './UserContext';
-import Card from './Card';
+import Card from './Card'; 
 
 function Withdraw() {
   const ctx = useContext(UserContext);
@@ -29,7 +29,7 @@ function Withdraw() {
       return;
     }
 
-    if (withdrawValue > ctx.users[0]?.balance) { // Using optional chaining to avoid errors if ctx.users[0] is undefined
+    if (withdrawValue > ctx.users[0]?.balance) 
       setStatus('Error: Withdrawal amount exceeds account balance.');
       return;
     }
@@ -53,7 +53,7 @@ function Withdraw() {
       status={status}
       body={(
         <>
-          <p>Balance: {ctx.users[0]?.balance}</p> {/* Using optional chaining */}
+          <p>Balance: {ctx.users[0]?.balance}</p> 
           <input
             type="text"
             className="form-control"
@@ -73,5 +73,7 @@ function Withdraw() {
     />
   );
 }
+
+export default Withdraw;
 
 export default Withdraw;
