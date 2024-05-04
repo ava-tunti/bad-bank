@@ -8,9 +8,7 @@
 //   );
 // }
 
-
 import React, { useState, useContext } from 'react';
-import UserContext from './UserContext';
 
 function Withdraw() {
   const ctx = useContext(UserContext);
@@ -50,28 +48,32 @@ function Withdraw() {
   };
 
   return (
-    <div className="card">
-      <h1 className="card-header">Withdraw</h1>
-      <div className="card-body">
-        <p>Balance: {ctx.users[0].balance}</p>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Enter withdrawal amount"
-          value={withdrawAmount}
-          onChange={(e) => setWithdrawAmount(e.target.value)}
-        />
-        <button
-          className="btn btn-primary mt-2"
-          onClick={handleWithdraw}
-          disabled={!withdrawAmount}
-        >
-          Withdraw
-        </button>
-        {status && <div className="mt-3">{status}</div>}
-      </div>
-    </div>
+    <Card
+      bgcolor="primary"
+      header="Withdraw"
+      status={status}
+      body={(
+        <>
+          <p>Balance: {ctx.users[0].balance}</p>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter withdrawal amount"
+            value={withdrawAmount}
+            onChange={(e) => setWithdrawAmount(e.target.value)}
+          />
+          <button
+            className="btn btn-primary mt-2"
+            onClick={handleWithdraw}
+            disabled={!withdrawAmount}
+          >
+            Withdraw
+          </button>
+        </>
+      )}
+    />
   );
 }
 
 export default Withdraw;
+
