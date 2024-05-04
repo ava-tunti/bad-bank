@@ -7,23 +7,12 @@
 //     </>
 //   );
 // }
-import React, { useState, useContext } from 'react';
-import UserContext from './UserContext';
-import Card from './Card'; 
 
 function Withdraw() {
   const [withdrawAmount, setWithdrawAmount] = useState('');
   const [status, setStatus] = useState('');
   const ctx = useContext(UserContext);
   
-  function validate(field, label){
-    if (!field) {
-      setStatus('Error: ' + label);
-      setTimeout(() => setStatus(''), 3000);
-      return false;
-    }
-    return true;
-  }
   
   function handleWithdraw = () => {
     const withdrawValue = parseFloat(withdrawAmount);
