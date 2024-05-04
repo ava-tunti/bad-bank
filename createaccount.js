@@ -82,7 +82,7 @@ function CreateAccount(){
     if (!validate(password, 'password')) return;
     if (password.length < 8) {
       setStatus('Error: Password must be at least 8 characters long');
-      setTimeout(() => setStatus(''), 3000);
+      setTimeout(() => setStatus(''), 5000);
       return;
     }
     ctx.users.push({name, email, password, balance: 100});
