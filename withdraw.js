@@ -9,7 +9,7 @@
 // }
 import React, { useState, useContext } from 'react';
 import UserContext from './UserContext';
-import Card from './Card'; // Import Card component
+import Card from './Card';
 
 function Withdraw() {
   const ctx = useContext(UserContext);
@@ -17,29 +17,27 @@ function Withdraw() {
   const [status, setStatus] = useState('');
 
   const handleWithdraw = () => {
-    // Convert input to number
     const withdrawValue = parseFloat(withdrawAmount);
 
-    // Validate if the input is a number
     if (isNaN(withdrawValue)) {
       setStatus('Error: Please enter a valid number for withdrawal.');
       return;
     }
 
-    // Check if the withdrawal amount is negative
     if (withdrawValue < 0) {
       setStatus('Error: Withdrawal amount cannot be negative.');
       return;
     }
 
-    // Check if the withdrawal amount exceeds balance
-    if (withdrawValue > ctx.users[0].balance) {
+    if (withdrawValue > ctx.users[0]?.balance) { // Using optional chaining to avoid errors if ctx.users[0] is undefined
       setStatus('Error: Withdrawal amount exceeds account balance.');
       return;
     }
 
+    const newBalance = ctx.users[0].balance - withdrawValue; // Calculate new balance
+
     // Update balance
-    ctx.users[0].balance -= withdrawValue;
+    ctx.users[0].balance = newBalance;
 
     // Reset withdraw field
     setWithdrawAmount('');
@@ -55,7 +53,7 @@ function Withdraw() {
       status={status}
       body={(
         <>
-          <p>Balance: {ctx.users[0].balance}</p>
+          <p>Balance: {ctx.users[0]?.balance}</p> {/* Using optional chaining */}
           <input
             type="text"
             className="form-control"
